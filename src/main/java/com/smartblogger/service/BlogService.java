@@ -12,10 +12,10 @@ public class BlogService {
 		blogDAO = new BlogDAO();
 	}
 
-	public void create(Blog entity) throws Exception {
+	public void create(Blog blog) throws Exception {
 		blogDAO.openCurrentSessionwithTransaction();
 		try {
-			blogDAO.create(entity);
+			blogDAO.create(blog);
 		} catch (Exception e) {
 			blogDAO.closeCurrentSessionOnException();
 			throw e;
@@ -23,10 +23,10 @@ public class BlogService {
 		blogDAO.closeCurrentSessionwithTransaction();
 	}
 
-	public void update(Blog entity) throws Exception {
+	public void update(Blog blog) throws Exception {
 		blogDAO.openCurrentSessionwithTransaction();
 		try {
-			blogDAO.update(entity);
+			blogDAO.update(blog);
 		} catch (Exception e) {
 			blogDAO.closeCurrentSessionOnException();
 			throw e;
@@ -41,6 +41,13 @@ public class BlogService {
 		return Blog;
 	}
 
+	public Blog getById(Integer id) {
+		blogDAO.openCurrentSession();
+		Blog Blog = blogDAO.getById(id);
+		blogDAO.closeCurrentSession();
+		return Blog;
+	}
+	
 	public void delete(String id) throws Exception {
 		blogDAO.openCurrentSessionwithTransaction();
 		Blog Blog = blogDAO.getById(id);

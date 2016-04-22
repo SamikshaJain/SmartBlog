@@ -16,6 +16,16 @@ public class Blog {
 	//@JsonManagedReference
 	private User user;
 	
+	public Blog() {
+		
+	}
+	public Blog(String title, String text, User user) {
+		this.title = title;
+		this.content  = text;
+		this.user  = user;
+		this.postDate  = new Timestamp(System.currentTimeMillis());
+		this.tag = "tag";
+	}
 	public User getUser() {
 		return user;
 	}

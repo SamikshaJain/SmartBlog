@@ -3,6 +3,7 @@ package com.smartblogger.service;
 import java.util.List;
 
 import com.smartblogger.dao.UserDAO;
+import com.smartblogger.model.Blog;
 import com.smartblogger.model.User;
 
 
@@ -49,7 +50,8 @@ public class UserService {
 		return result;
 	}
 
-	public User getById(String id) {
+	
+	public User getById(Integer id) {
 		userDao.openCurrentSession();
 		User user = userDao.getById(id);
 		userDao.closeCurrentSession();

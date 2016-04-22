@@ -3,7 +3,7 @@ package com.smartblogger.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.cisco.blog.persist.Blog;
+//import org.cisco.blog.persist.Blog;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;

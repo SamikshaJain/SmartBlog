@@ -5,13 +5,17 @@ package com.smartblogger.service;
 	import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
-	import javax.ws.rs.Produces;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 	import javax.ws.rs.core.MediaType;
 
 import com.smartblogger.model.Blog;
+import com.smartblogger.model.User;
 
 
 	@Path("/blogs")
@@ -24,12 +28,12 @@ import com.smartblogger.model.Blog;
 		private Integer         userId;
 		
 		
-		BlogRestApi(String title, String content) {
+		public BlogRestApi(String title, String content) {
 			this.title = title;
 			this.content = content;
 		}
 
-		BlogRestApi(Integer blogid, String title, 
+		public BlogRestApi(Integer blogid, String title, 
 				     String content, Timestamp postdate,
 				     String username, Integer userId ) {
 			this.blogid    = blogid; 
@@ -113,21 +117,62 @@ import com.smartblogger.model.Blog;
 			return list;
 		}
 		
+		@GET
+		@Path("/{param}")
+		@Produces(MediaType.APPLICATION_JSON)
+		public BlogRestApi getBlogById(@PathParam("param") Integer param) throws Exception {
+			BlogService blogService = new BlogService();
+			Blog blog = blogService.getById(param);
+			BlogRestApi  blogRA = null;
+			
+			if (blog != null)
+			 blogRA= new BlogRestApi(blog.getBlogId(), 
+					 blog.getTitle(), 
+					 blog.getContent(), 
+					 blog.getPostDate(), 
+					                         
+					 blog.getUser() == null ? "anonymous": blog.getUser().getName(), 
+							 blog.getUser() == null ? 0:blog.getUser().getUserId() );
+			return blogRA;
+		}
 
 		@GET
 		@Produces(MediaType.APPLICATION_JSON)
 		public List<BlogRestApi> BlogGet() throws Exception {
-			BlogRestApi  a = new BlogRestApi();
-			return a.BlogGetAll();
+			BlogRestApi  blogRA = new BlogRestApi();
+			return  blogRA.BlogGetAll();
 		}
+		
+		@PUT
+		@Consumes(MediaType.APPLICATION_JSON)
+		public void BlogUpdate(BlogRestApi blogApi) throws Exception {
+			UserService userService = new UserService();
+			User user = userService.getById(Integer.parseInt("1"));
+			System.out.println(user.toString());
+			System.out.println(blogApi.toString());
+			Blog blog = new Blog(title,content, user);
+			BlogService blogService  = new BlogService() ;
+			blogService.update(blog);
+		} 
+
 		
 		@POST
 		@Consumes(MediaType.APPLICATION_JSON)
-		public void Create(BlogRestApi blog) throws Exception {
-			BlogRestApi  a = new BlogRestApi();
-			a.Create(blog);
+		public void createBlog(BlogRestApi blogApi) throws Exception {
+			UserService userService = new UserService();
+			User user = userService.getById(Integer.parseInt("1"));
+			System.out.println(user.toString());
+			System.out.println(blogApi.toString());
+			Blog blog = new Blog(title,content, user);
+			BlogService blogService  = new BlogService() ;
+			blogService.create(blog);
+			System.out.println("Done");
 		}
 		
-		
+		@DELETE
+		public void blogDelete(String id) throws Exception {
+			BlogService blogService  = new BlogService() ;
+			blogService.delete(id);
+		}
 	}
 

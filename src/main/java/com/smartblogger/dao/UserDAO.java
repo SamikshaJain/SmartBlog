@@ -7,7 +7,8 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
 import com.smartblogger.model.User;
-
+import com.smartblogger.dao.HibernateUtil;
+import com.smartblogger.dao.DaoImpl;
 public class UserDAO implements DaoImpl<User, String> {
 
 	public UserDAO() {
@@ -37,8 +38,8 @@ public class UserDAO implements DaoImpl<User, String> {
 		return users;
 	}
 	
-	public User getById(String id) {
-		User user = (User) HibernateUtil.currentSession().get(User.class, Integer.valueOf(id));
+	public User getById(Integer id) {
+		User user = (User) HibernateUtil.currentSession().get(User.class, id);
 		return user; 
 	}
 	
@@ -80,6 +81,11 @@ public class UserDAO implements DaoImpl<User, String> {
 		for (User user : userList) {
 			delete(user);
 		}
+	}
+
+	public User getById(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

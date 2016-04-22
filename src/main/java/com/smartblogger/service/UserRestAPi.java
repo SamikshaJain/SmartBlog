@@ -27,14 +27,14 @@ package com.smartblogger.service;
 		//@JsonIgnoreProperties
 		protected String password;
 		
-		UserRestAPi (int userId,  String name, String email) {
+		public UserRestAPi (int userId,  String name, String email) {
 		
 			this.name = name;
 			this.email = email;
 			this.userId = userId;
 		}
 		
-		UserRestAPi (  String name, String email, String password) {
+		public UserRestAPi (  String name, String email, String password) {
 
 			this.name = name;
 			this.email = email;
@@ -90,19 +90,19 @@ package com.smartblogger.service;
 		@GET
 		@Path("/{param}")
 		@Produces(MediaType.APPLICATION_JSON)
-		public UserRestAPi userGet(@PathParam("param") String param) throws Exception {
+		public UserRestAPi userGet(@PathParam("param") Integer param) throws Exception {
 			String username=null;
-			String id = null;
+			Integer id = 1;
 			User user = null;
 			UserRestAPi userRestAPi;
 			
 			UserService userService  = new UserService() ;
 			try{
-				if (Integer.parseInt(param) > 0) {
+				if (param > 0) {
 					id = param;
 				}
 			} catch (Exception e) {
-				username = param;
+				username = null;
 			}
 			
 			if (username == null) {

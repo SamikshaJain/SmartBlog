@@ -3,7 +3,7 @@ package com.smartblogger.dao;
 import java.util.List;
 
 import com.smartblogger.model.Blog;
-
+import com.smartblogger.dao.HibernateUtil;
 
 public class BlogDAO implements DaoImpl< Blog, String> {
 
@@ -40,8 +40,8 @@ public class BlogDAO implements DaoImpl< Blog, String> {
 		return Blog;
 	}
 
-	public Blog getById(String id) {
-		Blog Blog = (Blog) HibernateUtil.currentSession().get(Blog.class, Integer.valueOf(id));
+	public Blog getById(Integer id) {
+		Blog Blog = (Blog) HibernateUtil.currentSession().get(Blog.class, id);
 		return Blog; 
 	}
 	
@@ -65,6 +65,11 @@ public class BlogDAO implements DaoImpl< Blog, String> {
 		for (Blog blog : blogList) {
 			delete(blog);
 		}
+	}
+
+	public Blog getById(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

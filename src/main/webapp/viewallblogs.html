@@ -1,0 +1,245 @@
+<html>
+<head>
+    <meta charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="scripts/jquery-2.2.3.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+
+     <script type="text/javascript" src="scripts/jquery-2.2.3.js"></script>
+   <script type="text/javascript" src="js/cufon-yui.js"></script>
+   <script type="text/javascript" src="js/georgia.js"></script>
+   <script type="text/javascript" src="js/cuf_run.js"></script>
+<script>
+$(document).ready(function() {
+	$.get("cmad/blogs", function(data){
+    alert("I ma here for test");
+		for(index in data){
+
+var link = $("<a/>",{"href":"test.html",
+        "text":data[index].title,"class":"blogtitle"
+});
+var body = $("<div/>",{"text":data[index].body,"class":"blogbody"
+});
+var  date  = new Date(data[index].post_date),
+    day   = date.getDate(),
+    month = date.getMonth() + 1,
+    yr = date.getFullYear(),
+
+  blogTimeRaw= dataFromTimestamp(data[index].post_date)
+
+    blogTime = $('<div />', {id : 'month', text : blogTimeRaw, "class":"body_date"});
+
+
+
+/*
+var user = $("<div/>",{"text":data[index].user_id.name,"class":"username"
+ar jsDate = new Date(post_date*1000);
+$('#dates').append(elem1, elem2);
+var post_date = $("<div/>",{"text":new Date(data[index].post_date*1000),"class":"body_date"
+});
+});
+*/
+var breakline = $('<hr />');
+		/*	$("#blogSection").append(link).append(title).append(body).append(blogTime).append(breakline);
+    var breakpoint = $("<br />");
+    var Span = $("<span />", {"text": text : blogTime | Posted by Owner | Filed under templates, interne});*/
+    var myspan = $("<span />", {"text": blogTimeRaw });
+
+      var blogShow = $("<h2 />", {"text":data[index].title});
+      var blogBody = $("<p />",{"text":data[index].body});
+
+      var mylink= $( "<br>myspan<br>myspan>" );
+
+      var ith=document.createElement('h2'),
+          its=document.createElement('span'),
+        ita=document.createElement('a'),
+        dateTxt = blogTimeRaw + "| Posted By",
+        iat=document.createTextNode(data[index].title),
+        idn=document.createTextNode(dateTxt),
+        brpoint = document.createElement('br'),
+        itp = document.createElement('p'),
+     ipt = document.createTextNode(data[index].body),
+     itp2 = document.createElement('p'),
+     ita2=document.createElement('a'),
+     ipt2 = document.createTextNode("Read More"),
+     brpoint2 =document.createElement('br');
+
+
+  ith.appendChild(iat);
+  ith.appendChild(brpoint);
+  its.appendChild(idn);
+  ith.appendChild(its);
+  itp.appendChild(ipt);
+  $(ita2).attr('href','login.html');
+  ita2.appendChild(ipt2);
+ itp2.appendChild(ita2);
+
+  $("#left").append(ith).append(itp).append(brpoint2).append(itp2);
+
+  /*  $("#left").append(blogShow).append(myspan).append(blogBody).append(mylink); */
+		}
+	});
+});
+function dataFromTimestamp(timestamp){
+    var d = new Date(timestamp);
+
+    // Time
+    var h = addZero(d.getHours());              //hours
+    var m = addZero(d.getMinutes());            //minutes
+    var s = addZero(d.getSeconds());            //seconds
+
+    // Date
+    var da = d.getDate();                       //day
+    var mon = d.getMonth() + 1;                 //month
+    var yr = d.getFullYear();                   //year
+    var dw = d.getDay();                        //day in week
+
+    // Readable feilds
+    months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+    var monName = months[d.getMonth()];         //month Name
+    var time = h + ":" + m + ":" + s;           //full time show
+    var thisDay = da + "/" + mon + "/" + yr;    //full date show
+    var fullTimeValue = thisDay + " " + h +":" + m + ":" + s;
+    var dateTime = {
+        seconds : s,
+        minutes : m,
+        hours : h,
+        dayInMonth : da,
+        month : mon,
+        year : yr,
+        dayInTheWeek : dw,
+        monthName : monName,
+        fullTime : time,
+        fullDate : thisDay
+    };
+    return fullTimeValue;
+
+    function addZero(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+}
+</script>
+  </head>
+
+<body>
+  <!-- START PAGE SOURCE -->
+  <div class="main">
+    <div class="header">
+      <div class="header_resize">
+
+        <div class="logo">
+          <h1><a href="index.html"><small>pagenotfound.com</small>CMAD<span>Blog</span></a></h1>
+        </div>
+
+        <div class="clr"></div>
+
+        <div class="search">
+          <form id="form1" name="form1" method="post" action="#">
+            <span>
+            <input name="q" type="text" class="keywords" id="textfield" maxlength="50" value="Search..." />
+            </span>
+            <input name="b" type="image" src="images/search.gif" class="button" />
+          </form>
+        </div>
+
+        <div class="menu">
+          <ul>
+            <li><a href="index.html" class="active">Questions</a></li>
+            <li><a href="addblog.html">Ask Questions</a></li>
+            <li><a href="userview.jsp"> Users </a></li>
+            <li><a href="contact.html" > Contact Us</a></li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="clr"></div>
+    </div>
+    <div class="clr"></div>
+    <div class="body">
+      <div class="body_resize">
+
+
+
+        <div class="left" id="left">
+        </div>
+        <div class="right">
+          <h2> Sidebar Menu</h2>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Signup</a></li>
+            <li><a href="#">Ask Questions</a></li>
+            <li><a href="#">Archives</a></li>
+          </ul>
+          <h2>Careers</h2>
+          <ul class="sponsors">
+            <li class="sponsors"><a href="#">For Companies</a><br />
+              Source, attract and recruit techincal talent on the platform 40 million developers trust to solve their coding problrms</li>
+            <li class="sponsors"><a href="#">FOR DEVELOPERS</a><br />
+              Want to sit back and recieve personalized job matches> Proactively find the best Java jobs in your city?
+            Join us and find your dream job on your terms.</li>
+            <li class="sponsors"><a href="#">Career Ads</a><br />
+            What if you could source top talent by exposing your job ads to the right seekers where they live online?
+
+            Monster’s exclusive Career Ad Network takes an existing Job Posting, dynamically transforms it into an online ad and strategically places it on Monster’s vast network of thousands of sites to attract the most qualified seekers that match your sourcing criteria.
+  Simple and easy to use, Career Ad Network targets seekers wherever they are online</li>
+            <li class="sponsors"><a href="#">US Advertising Executive - Naturejobs</a><br />
+
+            Springer Science+Business
+            New York ,NY
+  Springer Nature is a major new force in scientific, scholarly, professional and educational publishing. By using its combined expertise,
+  scale and the reach of our brands, the company aims to grow and in</li>
+          </ul>
+          <p>&nbsp;</p>
+          <div class="clr"></div>
+        </div>
+        <div class="clr"></div>
+      </div>
+    </div>
+    <div class="FBG">
+      <div class="FBG_resize">
+        <div class="blok2">
+          <h2>CMAD Team</h2>
+          <img src="images/sami.jpg" alt="" width="68" height="68" /> <img src="images/sami1.jpg" alt="" width="68" height="68" /> <img src="images/gallery_3.gif" alt="" width="68" height="68" /> <img src="images/gallery_4.gif" alt="" width="68" height="68" /> <img src="images/gallery_5.gif" alt="" width="68" height="68" /> <img src="images/gallery_6.gif" alt="" width="68" height="68" /> <img src="images/gallery_7.gif" alt="" width="68" height="68" /> <img src="images/gallery_8.gif" alt="" width="68" height="68" />
+          <div class="clr"></div>
+          <h2>Engineering </h2>
+          <p>Building and shipping products that millions of developers use every day. </br>
+            Recruiting the best (and nicest!) team of people to work with and constantly improving our employee experience. </p>
+        </div>
+        <div class="blok">
+          <h2>About</h2>
+          <img src="images/gallery_9.gif" alt="" width="68" height="68" />
+          <p>Developers trust CMAD Blog to help solve coding problems and use CMAD Blog Careers to find job opportunities. We’re committed to making the internet a better place, and our products aim to enrich the lives of developers as they grow and mature in their careers.
+
+            Founded in 2015, CMAD Blog sees 40 million visitors each month and is the flagship site of the Stack Exchange network, home to 150+ Q&A sites dedicated to niche topics.
+          </p>
+        </div>
+        <div class="blok">
+          <h2>Contact</h2>
+          <p>To buy ads or inquire about tag sponsorships, please contact us at ads@pagenotfound.com, call +91 80-44260000 and select option "2" at the auto-attendant to reach our ad sales team. Our business hours are Monday through Friday, 9am to 5pm IST .</p>
+          <img src="images/gallery_10.gif" alt="" width="68" height="68" /><img src="images/gallery_11.gif" alt="" width="68" height="68" /><img src="images/gallery_12.gif" alt="" width="68" height="68" />
+          <div class="clr"></div>
+          <p>Email	<a href="#">support@pagenotfound.com</a><br />
+          Phone	India: +91 80-44260000 (9am–5pm IST) </br>
+          Fax	US: +1 (212)785-4578 </br>
+          Office: Cisco Systems,
+          Bangalore </p>
+        </div>
+        <div class="clr"></div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer_resize">
+        <p class="lf">Copyright &copy; 2016 <a href="#">pagenotfound</a> - All Rights Reserved</p>
+        <p class="rf"><a href="index.jsp">Blog Website</a> by <a href="login.html">Samiksha And Utkarsh</a></p>
+        <div class="clr"></div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <!-- END PAGE SOURCE -->
+  <div align=center>This Website Is under Development By <a href='index.jsp'>Samiksha And Utkarsh</a></div></body>
+  </html>

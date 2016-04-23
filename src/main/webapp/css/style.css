@@ -8,6 +8,7 @@ body {
 html {
 	padding:0;
 	margin:0;
+	width: 100%
 }
 li.bg, .bg {
 	clear:both;
@@ -35,6 +36,7 @@ p.clr, .clr {
 .main {
 	margin:0 auto;
 	padding:0;
+	width :100%
 }
 h2 {
 	font:normal 24px Georgia, "Times New Roman", Times, serif;
@@ -60,7 +62,7 @@ a {
 .header_resize {
 	margin:0 auto;
 	padding:0;
-	width:970px;
+	width:100%;
 }
 .header {
 	margin:0;

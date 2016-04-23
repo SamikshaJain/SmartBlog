@@ -82,6 +82,20 @@ package com.smartblogger.service;
 			userService.create(user);
 		}
 		
+		public UserRestAPi checkloginuser() throws Exception {
+			
+			User user = null;
+			UserRestAPi userRestAPi = null;
+			
+			UserService userService  = new UserService() ;
+				user = userService.getByLoginInfo(email, password);
+				if(user != null) {
+				userRestAPi = new UserRestAPi (user.getUserId(), user.getName(),  user.getEmailId());
+				}
+			return userRestAPi;
+				
+		}
+		
 		public List<UserRestAPi> userReadAll() throws Exception {
 			UserService userService  = new UserService() ;
 			List<UserRestAPi> list = new ArrayList<UserRestAPi>();
@@ -126,6 +140,14 @@ package com.smartblogger.service;
 		public void UserCreate(UserRestAPi user) throws Exception {
 			user.userWrite();
 		}
+		
+		@POST
+		@Path("/{param}")
+		@Produces(MediaType.APPLICATION_JSON)
+		@Consumes(MediaType.APPLICATION_JSON)
+		public UserRestAPi getLoginUser(UserRestAPi user, @PathParam("param") String param) throws Exception {
+			return user.checkloginuser();
+			}
 		
 		@PUT
 		@Consumes(MediaType.APPLICATION_JSON)

@@ -51,7 +51,7 @@ $(document).ready(function() {
 
 	});
 });
-function dataFromTimestamp(timestamp){
+/*function dataFromTimestamp(timestamp){
 	
 	  var d = new Date(timestamp);
 
@@ -93,3 +93,4 @@ function dataFromTimestamp(timestamp){
 	        return i;
 	    }
 }
+*/

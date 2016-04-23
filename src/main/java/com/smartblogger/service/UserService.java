@@ -58,6 +58,12 @@ public class UserService {
 		return user;
 	}
 
+	public User getByLoginInfo(String email, String password) {
+		userDao.openCurrentSession();
+		User user = userDao.getByLoginInfo(email, password);
+		userDao.closeCurrentSession();
+		return user;
+	}
 	public void delete(String id) throws Exception {
 		userDao.openCurrentSessionwithTransaction();
 		User user = userDao.getById(id);

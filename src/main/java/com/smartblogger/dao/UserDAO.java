@@ -3,6 +3,7 @@ package com.smartblogger.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
@@ -43,6 +44,20 @@ public class UserDAO implements DaoImpl<User, String> {
 		return user; 
 	}
 	
+	public User getByLoginInfo(String email, String password) {
+		
+		Session session = HibernateUtil.currentSession();
+		Criteria criteria = session.createCriteria(User.class);
+		
+		User user = (User) criteria.add(Restrictions.eq("emailId", email)).uniqueResult();
+		if (user != null &&   password.equals(user.getPassword())) {
+			
+			return user;
+		} else {
+			return null;
+		}
+	
+	}
 	public void create(User user) {
 		HibernateUtil.currentSession().save(user);
 	}

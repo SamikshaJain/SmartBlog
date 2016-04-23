@@ -24,6 +24,14 @@ public class User {
 		this.emailId = emailId;
 		this.password = password;
 	}
+	
+public User(Integer id, String name, String emailId, String password) {
+		
+	this.userId = id;
+		this.name = name;
+		this.emailId = emailId;
+		this.password = password;
+	}
 	public User() {
 		
 	}
@@ -58,15 +66,6 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	/*public void addBlog(Blog blog){
-		if(blogs==null){
-			blogs= new HashSet<Blog>();
-		}
-		blog.setUser(this);
-
-		blogs.add(blog);
-	}*/
 	
 	@Override
 	public String toString() {

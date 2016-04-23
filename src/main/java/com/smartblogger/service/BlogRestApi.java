@@ -28,11 +28,16 @@ import com.smartblogger.model.User;
 		private Integer         userId;
 		
 		
-		public BlogRestApi(String title, String content) {
+		public BlogRestApi(Integer blogid, String title, String content) {
+			this.blogid = blogid;
 			this.title = title;
 			this.content = content;
 		}
 
+		public BlogRestApi(String title, String content) {
+			this.title = title;
+			this.content = content;
+		}
 		public BlogRestApi(Integer blogid, String title, 
 				     String content, Timestamp postdate,
 				     String username, Integer userId ) {
@@ -136,6 +141,7 @@ import com.smartblogger.model.User;
 			return blogRA;
 		}
 
+		
 		@GET
 		@Produces(MediaType.APPLICATION_JSON)
 		public List<BlogRestApi> BlogGet() throws Exception {
@@ -147,7 +153,7 @@ import com.smartblogger.model.User;
 		@Consumes(MediaType.APPLICATION_JSON)
 		public void BlogUpdate(BlogRestApi blogApi) throws Exception {
 			UserService userService = new UserService();
-			User user = userService.getById(Integer.parseInt("1"));
+			User user = userService.getById(1);
 			System.out.println(user.toString());
 			System.out.println(blogApi.toString());
 			Blog blog = new Blog(title,content, user);
@@ -156,17 +162,22 @@ import com.smartblogger.model.User;
 		} 
 
 		
-		@POST
-		@Consumes(MediaType.APPLICATION_JSON)
-		public void createBlog(BlogRestApi blogApi) throws Exception {
+		public void blogCreate() throws Exception {
 			UserService userService = new UserService();
-			User user = userService.getById(Integer.parseInt("1"));
-			System.out.println(user.toString());
-			System.out.println(blogApi.toString());
-			Blog blog = new Blog(title,content, user);
+			User user = new User(1, "user1", "user1@gmail.com","password1" );
+			//User user = userService.getById(1);
+			Blog blog = new Blog(this.title ,this.content, user);
 			BlogService blogService  = new BlogService() ;
+			System.out.println(user.toString());
+			System.out.println(blog.toString());
 			blogService.create(blog);
 			System.out.println("Done");
+		}
+		
+		@POST
+		@Consumes(MediaType.APPLICATION_JSON)
+		public void AddBlog(BlogRestApi blogApi) throws Exception {
+			blogApi.blogCreate();
 		}
 		
 		@DELETE

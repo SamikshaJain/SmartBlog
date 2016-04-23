@@ -23,8 +23,7 @@ package com.smartblogger.service;
 
 		protected String name;
 		protected String email;
-		
-		//@JsonIgnoreProperties
+	
 		protected String password;
 		
 		public UserRestAPi (int userId,  String name, String email) {
@@ -41,6 +40,13 @@ package com.smartblogger.service;
 			this.password = password;
 		}
 
+		public UserRestAPi (int userId,  String name, String email, String password) {
+			
+			this.name = name;
+			this.email = email;
+			this.userId = userId;
+			this.password = password;
+		}
 		public UserRestAPi ( ) {
 
 		}
@@ -81,7 +87,7 @@ package com.smartblogger.service;
 			List<UserRestAPi> list = new ArrayList<UserRestAPi>();
 			List<User> user = userService.getAll();
 			for (User b : user) {
-				UserRestAPi up = new UserRestAPi(b.getUserId(), b.getName(),  b.getEmailId());
+				UserRestAPi up = new UserRestAPi(b.getUserId(), b.getName(),  b.getEmailId(), b.getPassword());
 				list.add(up);
 			}
 			return list;

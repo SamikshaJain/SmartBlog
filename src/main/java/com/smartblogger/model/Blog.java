@@ -13,7 +13,6 @@ public class Blog {
 	private String tag;
 	private Timestamp postDate;
 	
-	//@JsonManagedReference
 	private User user;
 	
 	public Blog() {

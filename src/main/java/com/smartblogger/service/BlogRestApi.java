@@ -164,8 +164,7 @@ import com.smartblogger.model.User;
 		
 		public void blogCreate() throws Exception {
 			UserService userService = new UserService();
-			User user = new User(1, "user1", "user1@gmail.com","password1" );
-			//User user = userService.getById(1);
+			User user = userService.getById(1);
 			Blog blog = new Blog(this.title ,this.content, user);
 			BlogService blogService  = new BlogService() ;
 			System.out.println(user.toString());

@@ -29,7 +29,7 @@ $(document).ready(function() {
 		    	     ita2=document.createElement('a'),
 		    	     ipt2 = document.createTextNode("Read More"),
 		    	     brpoint2 =document.createElement('br'),
-		    	      blogid= data.blogId;
+		    	      blogid= data.blogid;
 			    	 
 			    	 itp.appendChild(ipt);
 			    	  $(ita2).attr('href','#');
@@ -44,7 +44,12 @@ $(document).ready(function() {
 		    }
 		});
 	
+	 $(document).on("click", ".mylink", function(event) {
+	       event.preventDefault();    //prevent default action of <a>
+	       var id = $(this).attr('id');
+	        window.location.href = 'viewblog.jsp?id='+id; 
 
+	});
 });
 function dataFromTimestamp(timestamp){
 	

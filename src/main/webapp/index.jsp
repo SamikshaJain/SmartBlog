@@ -20,7 +20,7 @@
       <div class="header_resize">
 
         <div class="logo">
-          <h1><a href="index.html"><small>pagenotfound.com</small>CMAD<span>Blog</span></a></h1>
+          <h1><a href="index.html"><small>pagenotfound</small>CMAD<span>Blog</span></a></h1>
         </div>
 
         <div class="clr"></div>
@@ -36,8 +36,8 @@
 
         <div class="menu">
           <ul>
-            <li><a href="index.html" class="active">Questions</a></li>
-            <li><a href="addblog.html">Ask Questions</a></li>
+            <li><a href="viewallblog.html" class="active">Questions</a></li>
+            <li><a href="addblog.jsp">Ask Questions</a></li>
             <li><a href="userview.jsp"> Users </a></li>
             <li><a href="contact.html" > Contact Us</a></li>
           </ul>
@@ -56,11 +56,11 @@
         </div>
         <div class="right">
           <h2> Sidebar Menu</h2>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Signup</a></li>
-            <li><a href="#">Ask Questions</a></li>
+         <ul>
+            <li><a href="viewallblogs.jsp">Home</a></li>
+            <li><a href="login.jsp">Login</a></li>
+            <li><a href="signup.jsp">Signup</a></li>
+            <li><a href="addblog.jsp">Ask Questions</a></li>
             <li><a href="#">Archives</a></li>
           </ul>
           <h2>Careers</h2>
@@ -123,7 +123,7 @@
     <div class="footer">
       <div class="footer_resize">
         <p class="lf">Copyright &copy; 2016 <a href="#">pagenotfound</a> - All Rights Reserved</p>
-        <p class="rf"><a href="index.jsp">Blog Website</a> by <a href="login.html">Samiksha And Utkarsh</a></p>
+        <p class="rf"><a href="index.jsp">Blog Website</a> by <a href="login.jsp">Samiksha And Utkarsh</a></p>
         <div class="clr"></div>
       </div>
       <div class="clr"></div>

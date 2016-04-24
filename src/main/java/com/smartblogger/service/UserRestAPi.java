@@ -13,8 +13,9 @@ package com.smartblogger.service;
 	import javax.ws.rs.Produces;
 	
 	import javax.ws.rs.core.MediaType;
-	
-	import com.smartblogger.model.User;
+import javax.ws.rs.core.Response;
+
+import com.smartblogger.model.User;
 
 
 	@Path("/users")
@@ -96,6 +97,7 @@ package com.smartblogger.service;
 				
 		}
 		
+		
 		public List<UserRestAPi> userReadAll() throws Exception {
 			UserService userService  = new UserService() ;
 			List<UserRestAPi> list = new ArrayList<UserRestAPi>();
@@ -110,7 +112,7 @@ package com.smartblogger.service;
 		@GET
 		@Path("/{param}")
 		@Produces(MediaType.APPLICATION_JSON)
-		public UserRestAPi userGet(@PathParam("param") Integer param) throws Exception {
+		public UserRestAPi getUserByIdt(@PathParam("param") Integer param) throws Exception {
 			String username=null;
 			Integer id = 1;
 			User user = null;
@@ -148,6 +150,16 @@ package com.smartblogger.service;
 		public UserRestAPi getLoginUser(UserRestAPi user, @PathParam("param") String param) throws Exception {
 			return user.checkloginuser();
 			}
+		
+		@POST
+		@Path("/check")
+		@Consumes(MediaType.APPLICATION_JSON)
+		@Produces(MediaType.TEXT_HTML)
+		public Response CheckUser(UserRestAPi user, @PathParam("param") String param) throws Exception {
+			UserRestAPi loginuser = user.checkloginuser();
+			return Response.status(200).entity("Successfully added user " +loginuser).build();
+		}
+		
 		
 		@PUT
 		@Consumes(MediaType.APPLICATION_JSON)

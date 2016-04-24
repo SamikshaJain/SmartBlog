@@ -41,6 +41,12 @@ public class BlogService {
 		return Blog;
 	}
 
+	public List<Blog> getByRange(Integer start) {
+		blogDAO.openCurrentSession();
+		List<Blog> Blog = blogDAO.getBlogInRange(start,10);
+		blogDAO.closeCurrentSession();
+		return Blog;
+	}
 	public Blog getById(Integer id) {
 		blogDAO.openCurrentSession();
 		Blog Blog = blogDAO.getById(id);

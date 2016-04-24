@@ -11,21 +11,20 @@
 
     <link rel="stylesheet" href="css/style.css">
 <script type="text/javascript" src="scripts/common.js"></script>
-          <script>
+<script type="text/javascript" src="scripts/validation.js"></script>
+  <script>
   $(document).ready(function() {
     alert (" Register");
-    $("form").submit(function (e) {
-
-        alert ("call submit");
-        var user = document.getElementById("username").value;
+   
+      $("form").submit(function (e) {
+        	var user = document.getElementById("username").value;
   
         var pwd = document.getElementById("password").value;
   
         var mail = document.getElementById("email").value;
 
         var data = JSON.stringify({name:user, email: mail, password: pwd});
-
-        alert( data);
+        
         event.preventDefault(); 
         $.ajax({
             type : "POST",
@@ -40,7 +39,9 @@
   },
 
   });
-    });  
+        });
+     
+  
     
 });
 
@@ -94,11 +95,11 @@
     <div class="form-header">
       <h1>Register Account</h1>
     </div>
-    <div class="form-content">
+    <div class="form-content" id="validateform">
       <form>
        <div class="form-group">
           <label for="username">User Name</label>
-          <input type="text" id="username" name="username" required="required"/>
+          <input type="text" id="username" name="username" minlength="8" required="required"/>
         </div>
         <div class="form-group">
           <label for="email">Email Address</label>
@@ -106,14 +107,16 @@
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" required="required"/>
+          <input type="password" id="password" name="password" minlength="8" required="required"/>
         </div>
         <div class="form-group">
           <label for="cpassword">Confirm Password</label>
-          <input type="password" id="cpassword" name="cpassword" required="required"/>
+          <input type="password" id="cpassword" name="cpassword" minlength="8" required="required"/>
         </div>
         <div class="form-group">
           <button type="submit">Register</button>
+        </div>
+        <div class="form-group"  id="errors">
         </div>
       </form>
     </div>
@@ -199,7 +202,34 @@
   </div>
   <!-- END PAGE SOURCE -->
   <div align=center>This Website Is under Development By <a href='index.jsp'>Samiksha And Utakarsh</a></div></body>
-  </html>
+   <script>
+  $(document).ready(function() {
+    alert (" Register");
+    $("#validateform").validate({
+        rules: {
+            username: {
+                required: true
+            },
+            email: {
+                required: true,
+                minlength: 6  // <-- removed underscore
+            }
+        },
+        messages: {
+            username: {
+                required: "this field is required"
+            },
+            email: {
+                required: "Enter recipient name",
+                minlength: "Name should be at least {0} characters long" // <-- removed underscore
+            }
+        },
+       
+    });
+
+    alert (" Submit");
+    </script>
+    </html>
   
   
   

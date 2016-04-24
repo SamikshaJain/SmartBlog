@@ -2,7 +2,13 @@ package com.smartblogger.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
+
 import com.smartblogger.model.Blog;
+import com.smartblogger.model.User;
 import com.smartblogger.dao.HibernateUtil;
 
 public class BlogDAO implements DaoImpl< Blog, String> {
@@ -40,6 +46,24 @@ public class BlogDAO implements DaoImpl< Blog, String> {
 		return Blog;
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Blog> getBlogInRange(Integer first, Integer count) {
+		Query tmp = HibernateUtil.currentSession().createQuery("from Blog");
+
+	    if (first != null)
+	        tmp.setFirstResult(first);
+	    if (count != null)
+	        tmp.setMaxResults(count);
+
+	    return (List<Blog>)tmp.list();
+	}
+	
+		
+		/*
+		List<Blog> Blog = (List<Blog>) HibernateUtil.currentSession().createQuery("from Blog").list();
+		return Blog;*/
+
+	
 	public Blog getById(Integer id) {
 		Blog Blog = (Blog) HibernateUtil.currentSession().get(Blog.class, id);
 		return Blog; 

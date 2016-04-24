@@ -4,10 +4,9 @@
     <script type="text/javascript" src="scripts/jquery-2.2.3.js"></script>
 
     <link rel="stylesheet" href="css/style.css">
- <link rel="stylesheet" href="css/style1.css">
-
-<script type="text/javascript" src="scripts/login.js"></script>
-
+<script type="text/javascript" src="scripts/common.js"></script>
+     <script type="text/javascript" src="scripts/jquery-2.2.3.js"></script>
+   <script type="text/javascript" src="scripts/viewnextblog.js"></script>
 
   </head>
 
@@ -18,7 +17,7 @@
       <div class="header_resize">
 
         <div class="logo">
-          <h1><a href="index.html"><small>pagenotfound</small>CMAD<span>Blog</span></a></h1>
+          <h1><a href="index.html"><small>SmartBlogger</small>CMAD<span>.com</span></a></h1>
         </div>
 
         <div class="clr"></div>
@@ -34,8 +33,8 @@
 
         <div class="menu">
           <ul>
-            <li><a href="viewallblog.html" class="active">Questions</a></li>
-            <li><a href="addblog.jsp">Ask Questions</a></li>
+            <li><a href="index.html" class="active">Questions</a></li>
+            <li><a href="addblog.html">Ask Questions</a></li>
             <li><a href="userview.jsp"> Users </a></li>
             <li><a href="contact.html" > Contact Us</a></li>
           </ul>
@@ -51,41 +50,10 @@
 
 
         <div class="left" id="left">
-        <div class="form">
-  <div class="form-toggle"></div>
-  <div class="form-panel one">
-    <div class="form-header">
-      <h1>Account Login</h1>
-    </div>
-    <div class="form-content">
-      <form>
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="username" id="username" name="username" required="required"/>
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" required="required"/>
-        </div>
-        <div class="form-group">
-          <label class="form-remember">
-            <input type="checkbox"/>Remember Me
-          </label><a href="#" class="form-recovery">Forgot Password?</a>
-        </div>
-        <div class="form-group">
-          <button type="submit">Log In</button>
-        </div>
-        <div class="form-group" id=addResultDiv>
-       
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
         </div>
         <div class="right">
           <h2> Sidebar Menu</h2>
-         <ul>
+          <ul>
             <li><a href="viewallblogs.jsp">Home</a></li>
             <li><a href="login.jsp">Login</a></li>
             <li><a href="signup.jsp">Signup</a></li>
@@ -152,7 +120,7 @@
     <div class="footer">
       <div class="footer_resize">
         <p class="lf">Copyright &copy; 2016 <a href="#">pagenotfound</a> - All Rights Reserved</p>
-        <p class="rf"><a href="index.jsp">Blog Website</a> by <a href="login.jsp">Samiksha And Utkarsh</a></p>
+        <p class="rf"><a href="index.jsp">Blog Website</a> by <a href="login.html">Samiksha And Utkarsh</a></p>
         <div class="clr"></div>
       </div>
       <div class="clr"></div>

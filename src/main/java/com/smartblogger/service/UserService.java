@@ -9,7 +9,11 @@ import com.smartblogger.model.User;
 
 public class UserService {
 	private static UserDAO userDao;
-
+	
+	public void setUserDAO(UserDAO dao){
+		this.userDao = dao;
+	}
+	
 	public UserService() {
 		userDao = new UserDAO();
 	}

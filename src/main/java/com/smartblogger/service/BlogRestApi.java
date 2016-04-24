@@ -111,13 +111,13 @@ import com.smartblogger.model.User;
 			List<BlogRestApi> list = new ArrayList<BlogRestApi>();
 			List<Blog> blog = blogService.getAll();
 			for (Blog b : blog) {
-				BlogRestApi up = new BlogRestApi(b.getBlogId(), 
+				BlogRestApi blogRA = new BlogRestApi(b.getBlogId(), 
 						                         b.getTitle(), 
 						                         b.getContent(),
 						                         b.getPostDate(),
 						                         b.getUser() == null ? "anonymous":b.getUser().getName(), 
 						                        b.getUser() == null ? 0: b.getUser().getUserId());
-				list.add(up);
+				list.add(blogRA);
 			}
 			return list;
 		}
@@ -141,6 +141,25 @@ import com.smartblogger.model.User;
 			return blogRA;
 		}
 
+		@GET
+		@Path("limit/{param}")
+		@Produces(MediaType.APPLICATION_JSON)
+		public List<BlogRestApi> getBlogByRange(@PathParam("param") Integer first) throws Exception {
+			BlogService blogService = new BlogService();
+			List<BlogRestApi> list = new ArrayList<BlogRestApi>();
+			List<Blog> blog = blogService.getByRange(first);
+			for (Blog b : blog) {
+				BlogRestApi blogRA = new BlogRestApi(b.getBlogId(), 
+						                         b.getTitle(), 
+						                         b.getContent(),
+						                         b.getPostDate(),
+						                         b.getUser() == null ? "anonymous":b.getUser().getName(), 
+						                        b.getUser() == null ? 0: b.getUser().getUserId());
+				list.add(blogRA);
+			}
+			return list;
+			
+		}
 		
 		@GET
 		@Produces(MediaType.APPLICATION_JSON)

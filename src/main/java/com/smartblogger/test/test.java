@@ -14,13 +14,9 @@ public class test
     public static void main( String[] args )
     {
 		UserService userService = new UserService();
-		User user1 = new User("user1",  "user1@gmail.com", "password1");
-		User user2 = new User("user2", "user2@gmail.com", "password2");
-		User user3 = new User("user3","user3@gmail.com", "password3");
-		try {
-			userService.deleteAll();
-		} catch (Exception e) {
-		}
+		User user1 = new User("testuser1",  "testuser1@gmail.com", "password");
+		User user2 = new User("testuser2", "testuser2@gmail.com", "password");
+		User user3 = new User("testuser3","testuser3@gmail.com", "password");
 		
 		try {
 			userService.create(user1);
@@ -57,45 +53,19 @@ public class test
 		}
 		System.out.println("-----------------"  + " Password Verification "+"------------------");
 		
-		//user 2 is deleted 
-		System.out.println("----user2 is deleted and password verification should fail");
-		if (userService.isValidPassword("user2", "password2")) {
-			System.out.println("password for user2 matched");
-		} else {
-			System.out.println("password for user2 did not match");
-		}
-		
-		System.out.println("----Password verification should pass");
-		if (userService.isValidPassword("user3", "password3")) {
-			System.out.println("password for user3 matched");
-		} else {
-			System.out.println("password for user3 did not match");
-		}
-
-		System.out.println("-----Invalid password Password verification should fail");
-		if (userService.isValidPassword("user3", "password5")) {
-			System.out.println("password for user3 matched");
-		} else {
-			System.out.println("password for user3 did not match");
-		}		
+			
 		System.out.println("-----------------"  + " Blogs "+"------------------");
 
 		BlogService qService = new BlogService();
 		
-		try {
-			qService.deleteAll();
-		} catch (Exception e) {
-		
-		}
-		
-		Blog Blog = new Blog("What is java ?", "I am unable to understand the difference between so many java machines", user1);
+		Blog Blog = new Blog("Status code 403 SC_FORBIDDEN ?", "Useful if your Servlet is dynamically interpreting the URL and returning page content accordingly. On the other hand, when the user requests a normal static page that isn't found (i.e. when not going through your Servlet), most web servers such as Apache will automatically return the 404 response code, plus a default or customised response page.", user1);
 		try {
 			qService.create(Blog);
 		} catch (Exception e) {
 		
 		}
 		
-		Blog Blog2 = new Blog("What is jvm ?", "I am unable to understand the difference between so many java machines", user2);
+		Blog Blog2 = new Blog("Count String Function ?", "For the actual search, I used the Count String Occurrence Function. The search words are compared first against the article title and then the content itself.", user2);
 		try {
 			qService.create(Blog2);
 		} catch (Exception e) {
